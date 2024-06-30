@@ -1,12 +1,17 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:parallax_scroll_effect_app/models/home_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class HomeScreenContent extends StatelessWidget {
+class HomeScreenContent extends StatefulWidget {
   const HomeScreenContent({super.key});
 
+  @override
+  State<HomeScreenContent> createState() => _HomeScreenContentState();
+}
+
+class _HomeScreenContentState extends State<HomeScreenContent> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,7 +45,7 @@ class HomeScreenContent extends StatelessWidget {
                                   ),
                               ),
                             ),
-                          ),
+                          ).animate(onPlay: (controller) => controller.forward(),).slideY(curve: Curves.easeInOutBack,duration: 1000.ms),
                           SizedBox(height: 1.h,),
                           Expanded(
                             child: Padding(
@@ -99,13 +104,13 @@ class HomeScreenContent extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
+                      ).animate().fadeIn(),
                     ),
                   );
                 },),
             options:CarouselOptions(
               height: 55.h,
-              viewportFraction: 0.85,
+              viewportFraction: 0.9,
               initialPage: 0,
               clipBehavior: Clip.none,
             )
