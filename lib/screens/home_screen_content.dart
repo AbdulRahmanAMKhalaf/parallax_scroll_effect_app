@@ -19,15 +19,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Align(
-          alignment: Alignment.topCenter,
-          child: Text('Scroll Horizantally',
-            style: TextStyle(
-                color: Colors.black.withOpacity(0.6)
-            ),
-          ),
-        ),
-        SizedBox(height: 5.h,),
         CarouselSlider(
             items: List.generate(
                 homeList.length,
