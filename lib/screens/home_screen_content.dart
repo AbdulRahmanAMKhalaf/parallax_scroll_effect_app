@@ -35,17 +35,18 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                           Container(
                             height: 32.h,
                             width: double.infinity,
-                            decoration: BoxDecoration(
+                            decoration:  BoxDecoration(
                               color: Colors.black87,
                               borderRadius: BorderRadius.vertical(top: Radius.circular(20.px)),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                  image:AssetImage(
-                                      homeList[index].image
-                                  ),
-                              ),
                             ),
-                          ).animate(onPlay: (controller) => controller.forward(),).slideY(curve: Curves.easeInOutBack,duration: 1000.ms),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(20.px)),
+                              child: Image(
+                                fit: BoxFit.cover,
+                                image: AssetImage(homeList[index].image),
+                              ).animate().moveX(begin: 0,end: 1,duration: 1000.ms).move(duration: 1000.ms),
+                            ),
+                          ),
                           SizedBox(height: 1.h,),
                           Expanded(
                             child: Padding(
