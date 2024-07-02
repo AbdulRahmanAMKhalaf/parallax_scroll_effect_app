@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:parallax_scroll_effect_app/models/home_model.dart';
@@ -18,12 +19,21 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Align(
+          alignment: Alignment.topCenter,
+          child: Text('Scroll Horizantally',
+            style: TextStyle(
+                color: Colors.black.withOpacity(0.6)
+            ),
+          ),
+        ),
+        SizedBox(height: 5.h,),
         CarouselSlider(
             items: List.generate(
                 homeList.length,
                 (index) {
                   return Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white70,
@@ -38,15 +48,12 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                             decoration:  BoxDecoration(
                               color: Colors.black87,
                               borderRadius: BorderRadius.vertical(top: Radius.circular(20.px)),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.vertical(top: Radius.circular(20.px)),
-                              child: Image(
+                              image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(homeList[index].image),
-                              ).animate().moveX(begin: 0,end: 1,duration: 1000.ms).move(duration: 1000.ms),
+                                  image:AssetImage(homeList[index].image)
+                              ),
                             ),
-                          ),
+                          ).animate().rotate(duration: 1000.ms,begin: 0,end: 1,curve: Curves.easeInOut).fadeIn(duration: 200.ms,curve: Curves.easeInOut),
                           SizedBox(height: 1.h,),
                           Expanded(
                             child: Padding(
@@ -111,7 +118,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                 },),
             options:CarouselOptions(
               height: 55.h,
-              viewportFraction: 0.9,
+              viewportFraction: 1,
               initialPage: 0,
               clipBehavior: Clip.none,
             )
