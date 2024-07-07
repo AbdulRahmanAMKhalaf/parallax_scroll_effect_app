@@ -47,7 +47,10 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                                       image:AssetImage(homeList[index].image)
                                   ),
                                 ),
-                              ).animate().rotate(duration: 1000.ms,begin: 0,end: 1,curve: Curves.easeInOut).fadeIn(duration: 200.ms,curve: Curves.easeInOut),
+
+                                ///Return here
+
+                              ).animate().shader(duration: 1000.ms,curve: Curves.easeInOut).fadeIn(duration: 200.ms,curve: Curves.easeInOut),
                               SizedBox(height: 1.h,),
                               Expanded(
                                 child: Padding(
